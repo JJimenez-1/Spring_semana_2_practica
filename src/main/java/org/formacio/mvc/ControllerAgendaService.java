@@ -31,6 +31,10 @@ public class ControllerAgendaService {
 	@RequestMapping(path="/contacte/{id}")
 	@ResponseBody
 	public Persona devolverContacto(@PathVariable String id){
+		if(agenda.recupera(id) == null){
+			throw new OperationException();
+		} 	
+		else
 			return agenda.recupera(id);
 	}
 	
